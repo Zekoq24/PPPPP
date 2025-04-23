@@ -1,6 +1,6 @@
 Flask==2.2.5
-requests
+requests==2.31.0
 solana==0.30.1
-spl-token
-base58
-solders
+base58==2.1.1
+solders==0.16.1
+anchorpy==0.12.0
