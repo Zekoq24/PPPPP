@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Solana Wallet Viewer</title>
-  <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@latest/lib/index.iife.min.js"></script>
-  <script src="/static/script.js"></script>
+  <title>Solana Wallet Cleaner</title>
+  <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@1.70.1/lib/index.iife.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@solana/spl-token@0.3.8/lib/index.iife.min.js"></script>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 800px; margin: 0 auto; }
+    button { padding: 10px 15px; background: #9945FF; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #7a36cc; }
+    button:disabled { background: #cccccc; }
+    #info, #scan-results { margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 5px; }
+    .warning { color: red; font-weight: bold; }
+  </style>
 </head>
-<body style="font-family: Arial; padding: 20px;">
-  <h1>Connect Phantom Wallet</h1>
-  <button onclick="connectWallet()">Connect Wallet</button>
-  <div id="info" style="margin-top:20px;"></div>
+<body>
+  <h1>Solana Token Account Cleaner</h1>
+  <p>Close empty token accounts and recover your SOL rent</p>
+  
+  <button onclick="connectWallet()" id="connect-btn">Connect Phantom Wallet</button>
+  <div id="info"></div>
 
-  <div id="cleanup-section" style="margin-top:30px; display:none;">
-    <button onclick="scanAccounts()">Scan for Cleanup</button>
-    <div id="scan-results" style="margin-top:15px;"></div>
-    <button onclick="confirmAndBurn()" style="margin-top:10px; display:none;" id="confirm-btn">Confirm Cleanup</button>
+  <div id="cleanup-section" style="display:none;">
+    <h2>Account Cleanup</h2>
+    <button onclick="scanAccounts()" id="scan-btn">Scan for Empty Accounts</button>
+    <div id="scan-results"></div>
+    <button onclick="confirmAndBurn()" style="display:none;" id="confirm-btn">Confirm and Recover SOL</button>
   </div>
+
+  <script src="/static/script.js"></script>
 </body>
 </html>
